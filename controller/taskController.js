@@ -74,6 +74,14 @@ const updateTask = async (req, res) => {
 // Mark a task as completed
 const taskComplete = async (req, res) => {
   try {
+    
+    const tasks = await taskModel.findById(req.params.id);
+   if(tasks.completed==true){
+    return res.status(200).json({
+      success: false,
+      message:"Task already completed"
+    });
+   }else{
     const updatedTask = await taskModel.findByIdAndUpdate(
       req.params.id,
       { completed: true },
@@ -84,10 +92,12 @@ const taskComplete = async (req, res) => {
       return res.status(404).send("Task not found");
     }
 
-    return res.status(200).json({
-      success: true,
-      data: updatedTask,
-    });
+      return res.status(200).json({
+        success: true,
+        data: updatedTask,
+      });
+   }
+  
   } catch (error) {
     console.error(error);
     return res.status(400).json({
