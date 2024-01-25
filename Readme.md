@@ -17,3 +17,12 @@
 2. Run command ``` npm i``` to install all the node modules
 3. Create a .env file and set the "PORT" and "MONGODB_URL" variables according to you.
 4. Use command ```npm start ``` to start the project
+
+### Code Structure and key decisions
+1) config:- contains all the database configrations related to database connection.
+2) controller:-contains all the functionalities to add,delete,update etc.
+3) middleware:-check whether condition satisfied or not.
+4) model:-contains schema of the database and contains validations also.
+5) router:-all the routes are defined in this folder.
+6) server.js:- it is the entry point
+7) app.js:- this is the backbone
